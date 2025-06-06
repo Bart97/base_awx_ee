@@ -7,4 +7,12 @@ images:
 dependencies:
   galaxy: requirements.yml
   python: requirements.txt
-#  system: bindep.txt
+  system:
+    - openssl-devel [platform:rpm]
+
+additional_build_steps:
+  append_base:
+    - COPY idracadm7 /usr/bin
+    - COPY libargtable2.so.0 /lib
+    - COPY libargtable2.so.0 /lib64
+    - RUN chmod 755 /usr/bin/idracadm7
